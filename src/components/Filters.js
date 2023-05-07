@@ -21,7 +21,6 @@ const Filters = () => {
     all_products,
   } = useFilterContext();
 
-  console.log(all_products);
   const categories = getUniqueValues(all_products, "category");
   const companies = getUniqueValues(all_products, "company");
   const colors = getUniqueValues(all_products, "colors");
@@ -149,11 +148,9 @@ const Filters = () => {
           {/*end of shipping */}
         </form>
 
-        <button
-          type="button"
-          className="clear-btn"
-          onClick={clearFilters}
-        >clear filters</button>
+        <button type="button" className="clear-btn" onClick={clearFilters}>
+          clear filters
+        </button>
       </div>
     </Wrapper>
   );
