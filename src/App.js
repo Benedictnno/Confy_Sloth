@@ -1,18 +1,17 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar, Sidebar, Footer } from "./components";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Navbar, Sidebar, Footer } from './components';
 import {
-  CheckOut,
   Home,
-  AuthWrapper,
-  PrivateRoute,
-  About,
-  Error,
-  Cart,
-  Products,
   SingleProduct,
-} from "./pages";
-
+  Cart,
+  Checkout,
+  Error,
+  About,
+  Products,
+  PrivateRoute,
+  AuthWrapper,
+} from './pages';
 function App() {
   return (
     <AuthWrapper>
@@ -20,26 +19,20 @@ function App() {
         <Navbar />
         <Sidebar />
         <Routes>
-          <Route path={"/"} element={<Home />} />
-
-          <Route path={"/about"} element={<About />} />
-
-          <Route path={"/cart"} element={<Cart />} />
-
-          <Route path={"/products"} element={<Products />} />
-
-          <Route path={"/products/:id"} element={<SingleProduct />} />
-
+          <Route path='/' exact element={<Home />} />
+          <Route path='about' element={<About />} />
+          <Route path='cart' element={<Cart />} />
+          <Route path='products' element={<Products />} />
+          <Route path='products/:id' element={<SingleProduct />} />
           <Route
-            path={"/CheckOut"}
+            path='checkout'
             element={
               <PrivateRoute>
-                <CheckOut />
+                <Checkout />
               </PrivateRoute>
             }
           />
-
-          <Route path={"*"} element={<Error />} />
+          <Route path='error' element={<Error />} />
         </Routes>
         <Footer />
       </Router>

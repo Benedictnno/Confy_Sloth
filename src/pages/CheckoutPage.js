@@ -19,10 +19,13 @@ const CheckoutPage = () => {
             </Link>
           </div>
         ) : (
+
           <div>
 
             <StripeCheckout />
           </div>
+
+          
         )}
       </Wrapper>
     </main>

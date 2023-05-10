@@ -11,11 +11,16 @@ import axios from "axios";
 import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
 import { formatPrice } from "../utils/helpers";
+
 import { useNavigate } from "react-router-dom";
+
+import { useHistory } from "react-router-dom";
+
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const CheckoutForm = () => {
+
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
   const navigate = useNavigate();
@@ -136,7 +141,10 @@ const CheckoutForm = () => {
   );
 };
 
+
+
 const StripeCheckout = () => {
+ 
   return (
     <Wrapper>
       <Elements stripe={promise}>
