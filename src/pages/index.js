@@ -5,11 +5,11 @@ import Cart from "./CartPage";
 import Products from "./ProductsPage";
 import SingleProduct from "./SingleProductPage";
 import PrivateRoute from "./PrivateRoute";
-import CheckOut from "./CheckoutPage";
+import Checkout from "./CheckoutPage";
 import AuthWrapper from "./AuthWrapper";
 
 export {
-  CheckOut,
+  Checkout,
   Home,
   AuthWrapper,
   PrivateRoute,
