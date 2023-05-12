@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../assets/logo.svg";
+import Logo from "./Logo";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "../utils/constants";
@@ -9,16 +9,16 @@ import { useProductsContext } from "../context/products_context";
 import { useUserContext } from "../context/user_context";
 
 const Nav = () => {
-  const { openSideBar } = useProductsContext();
+  const { openSidebar } = useProductsContext();
   const { myUser } = useUserContext();
   return (
     <NavContainer>
       <div className="nav-center">
         <div className="nav-header">
           <Link to={"/"}>
-            <img src={logo} alt="Logo" />
+           <Logo/>
           </Link>
-          <button type="button" className="nav-toggle" onClick={openSideBar}>
+          <button type="button" className="nav-toggle" onClick={openSidebar}>
             <FaBars />
           </button>
         </div>
@@ -30,7 +30,7 @@ const Nav = () => {
               <li key={id}>
                 <Link to={url}>{text}</Link>
               </li>
-            ); 
+            );
           })}
 
           {myUser && (

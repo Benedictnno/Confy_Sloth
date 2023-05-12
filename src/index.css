@@ -6,30 +6,30 @@ Variables
 
 :root {
   /* dark shades of primary color*/
-  --clr-primary-1: hsl(22, 28%, 21%);
-  --clr-primary-2: hsl(22, 28%, 29%);
-  --clr-primary-3: hsl(22, 28%, 37%);
-  --clr-primary-4: hsl(22, 28%, 45%);
+  --clr-primary-1: #312e81;
+  --clr-primary-2: #4338ca;
+  --clr-primary-3: #4f46e5;
+  --clr-primary-4: #6366f1;
   /* primary/main color */
-  --clr-primary-5: hsl(22, 31%, 52%);
+  --clr-primary-5:#3730a3;
   /* lighter shades of primary color */
-  --clr-primary-6: hsl(22, 31%, 60%);
-  --clr-primary-7: hsl(22, 31%, 67%);
-  --clr-primary-8: hsl(20, 31%, 74%);
-  --clr-primary-9: hsl(22, 31%, 81%);
-  --clr-primary-10: hsl(22, 31%, 88%);
+  --clr-primary-6: #818cf8;
+  --clr-primary-7: #a5b4fc;
+  --clr-primary-8: #c7d2fe;
+  --clr-primary-9: #e0e7ff;
+  --clr-primary-10: #eef2ff;
   /* darkest grey - used for headings */
-  --clr-grey-1: hsl(209, 61%, 16%);
-  --clr-grey-2: hsl(211, 39%, 23%);
-  --clr-grey-3: hsl(209, 34%, 30%);
-  --clr-grey-4: hsl(209, 28%, 39%);
+  --clr-grey-1: #94a3b8;
+  --clr-grey-2: #1e293b;
+  --clr-grey-3: #475569;
+  --clr-grey-4: #475569;
   /* grey used for paragraphs */
-  --clr-grey-5: hsl(210, 22%, 49%);
-  --clr-grey-6: hsl(209, 23%, 60%);
-  --clr-grey-7: hsl(211, 27%, 70%);
-  --clr-grey-8: hsl(210, 31%, 80%);
-  --clr-grey-9: hsl(212, 33%, 89%);
-  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-grey-5: #64748b;
+  --clr-grey-6: #94a3b8;
+  --clr-grey-7: #cbd5e1;
+  --clr-grey-8: #e2e8f0;
+  --clr-grey-9: #f1f5f9;
+  --clr-grey-10: #f8fafc;
   --clr-white: #fff;
   --clr-red-dark: hsl(360, 67%, 44%);
   --clr-red-light: hsl(360, 71%, 66%);
@@ -58,8 +58,7 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-family: 'Supreme', sans-serif,'Chubbo';
   background: var(--clr-white);
   color: var(--clr-grey-1);
   line-height: 1.5;
@@ -67,6 +66,9 @@ body {
 }
 ul {
   list-style-type: none;
+}
+button{
+  font-family: inherit;
 }
 a {
   text-decoration: none;
@@ -84,6 +86,8 @@ h5 {
   text-transform: capitalize;
   line-height: 1.25;
   margin-bottom: 0.75rem;
+  font-family: 'Chubbo',
+    sans-serif;;
 }
 h1 {
   font-size: 2.5rem;

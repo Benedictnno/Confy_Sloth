@@ -3,7 +3,7 @@ export const formatPrice = (number) => {
     style: "currency",
     currency: "USD",
 
-    currency: "NGN",
+    // currency: "NGN",
 
   }).format(number);
 };
