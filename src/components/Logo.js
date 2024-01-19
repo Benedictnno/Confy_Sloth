@@ -5,6 +5,8 @@ const Logo = () => {
   return (
     <Wrapper>
     <span>Sparrow</span>X
+
+
     </Wrapper>
   )
 }

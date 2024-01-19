@@ -108,6 +108,10 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-3);
 }
+
+.add-to-cart{
+  text-align: center;
+}
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 3rem;

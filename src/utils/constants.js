@@ -37,8 +37,10 @@ export const services = [
     title: "history",
     text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi",
   },
-];
+]
 
-export const products_url = "https://course-api.com/react-store-products";
+export const products_url = "/.netlify/functions/Products";
+// export const products_url = "https://course-api.com/react-store-products";
 
-export const single_product_url = `https://course-api.com/react-store-single-product?id=`;
+ export const single_product_url = `/.netlify/functions/SingleProducts?id=`;
+//  export const single_product_url = `https://course-api.com/react-store-single-product?id=`;

@@ -20,7 +20,7 @@ const initialState = {
   filters: {
     text: "",
     company: "all",
-    category: "all", 
+    category: "all",
     color: "all",
     min_price: 0,
     max_price: 0,
@@ -40,7 +40,7 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
 
   useEffect(() => {
-    dispatch({ type: FILTER_PRODUCTS })
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort, state.filters]);
 
@@ -58,31 +58,31 @@ export const FilterProvider = ({ children }) => {
   };
 
   const updateFilters = (e) => {
-    let name= e.target.name
-    let value = e.target.value
+    let name = e.target.name;
+    let value = e.target.value;
 
-    if (name === 'category') {
-      value = e.target.textContent
+    if (name === "category") {
+      value = e.target.textContent;
     }
-    if (name === 'color') {
-      value = e.target.dataset.color
+    if (name === "color") {
+      value = e.target.dataset.color;
     }
-    if (name === 'price') {
-      value =Number(value)
+    if (name === "price") {
+      value = Number(value);
     }
-    if (name === 'shipping') {
-      value =e.target.checked
+    if (name === "shipping") {
+      value = e.target.checked;
     }
-    dispatch({type: UPDATE_FILTERS,payload:{name,value}})
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
   function clearFilters() {
-    dispatch({type : CLEAR_FILTERS})
+    dispatch({ type: CLEAR_FILTERS });
   }
   return (
     <FilterContext.Provider
       value={{
         ...state,
-        clearFilters,    
+        clearFilters,
         updateFilters,
         updateSort,
         setListView,
