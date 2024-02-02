@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import  Sparrow from '../utils/Sparrow'
 const Logo = () => {
   return (
     <Wrapper>
-    <span>Sparrow</span>X
-
+    {/* <span>Sparrow</span>X */}
+<img src={Sparrow} alt="Sparrow Image" />
 
     </Wrapper>
   )
