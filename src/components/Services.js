@@ -50,6 +50,7 @@ const Wrapper = styled.section`
     margin-bottom: 0;
     line-height: 1.8;
     color: var(--clr-primary-3);
+    font-size: clamp(1rem, 5vw, .5rem);
   }
   .services-center {
     margin-top: 4rem;

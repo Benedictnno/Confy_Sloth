@@ -43,7 +43,8 @@ const Wrapper = styled.section`
     max-width: 45em;
     margin-bottom: 2rem;
     color: var(--clr-grey-5);
-    font-size: 1rem;
+    /* font-size: 1rem; */
+    font-size: clamp(1rem, 5vw, .5rem);
   }
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);
