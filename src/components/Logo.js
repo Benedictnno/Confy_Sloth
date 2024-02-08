@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Sparrow from "../utils/Sparrow.jpg";
+import Sparrow from "../assets/Sparrow_logo.jpg";
 const Logo = () => {
   return (
     <Wrapper>
