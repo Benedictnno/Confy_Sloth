@@ -9,7 +9,6 @@ import { useUserContext } from "../context/user_context";
 
 const CartContent = () => {
   const { cart, clearCart } = useCartContext();
-  console.log(cart);
   return (
     <Wrapper className="section section-center">
       <CartColumns />
