@@ -7,9 +7,7 @@ export const UserProvider = ({ children }) => {
   const { loginWithRedirect,logout,user } = useAuth0()
 
   useEffect(()=>{
-  
-    setMyUser(user)
-  
+    setMyUser(user);
   },[user])
   return (
     <UserContext.Provider value={{ loginWithRedirect, logout , myUser}}>

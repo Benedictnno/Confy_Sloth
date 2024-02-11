@@ -14,7 +14,6 @@ import { formatPrice } from "../utils/helpers";
 
 import { useNavigate } from "react-router-dom";
 
-import { useHistory } from "react-router-dom";
 
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
@@ -40,7 +39,6 @@ const CheckoutForm = () => {
         JSON.stringify({ cart, shipping_fee, total_amount })
       );
       setClientSecret(data.clientSecret);
-      // console.log(data.clientSecret);
     } catch (error) {
       // console.log(error.response);
     }
