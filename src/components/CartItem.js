@@ -13,6 +13,7 @@ const CartItem = ({ id, Image, name, color, price, amount }) => {
   function decrease() {
     toggleAmount(id, "dec");
   }
+  const freeColor = color.split(";");
   return (
     <Wrapper>
       <div className="title">
@@ -20,7 +21,7 @@ const CartItem = ({ id, Image, name, color, price, amount }) => {
         <div>
           <h5 className="name"> {name}</h5>
           <p>
-            color: <span style={{ backgroundColor: { color } }}></span>
+            color: <span style={{ backgroundColor: freeColor[0]}}></span>
           </p>
           <h5 className="price-small">{formatPrice(price)}</h5>
         </div>
