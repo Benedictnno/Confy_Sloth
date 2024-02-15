@@ -77,7 +77,7 @@ const Wrapper = styled.article`
     margin-bottom: 0;
   }
 
-  .color {
+  /* .color {
     color: var(--clr-grey-5);
     font-size: 0.75rem;
     letter-spacing: var(--spacing);
@@ -94,7 +94,7 @@ const Wrapper = styled.article`
       margin-left: 0.5rem;
       border-radius: var(--radius);
     }
-  }
+  } */
   .price-small {
     color: var(--clr-primary-5);
   }
