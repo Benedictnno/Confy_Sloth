@@ -17,6 +17,7 @@ const ProductImages = ({ images = [{ url: "" }] }) => {
               onClick={() => {
                 setMain(images[index]);
               }}
+              loading="lazy"
               className={`${image.url === main.url ? "active" : null}`}
             />
           );
@@ -37,7 +38,7 @@ const Wrapper = styled.section`
     object-fit: cover;
   }
   .gallery {
-    margin-top: -1rem;
+    margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     column-gap: 1rem;
