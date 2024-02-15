@@ -20,7 +20,7 @@ const CartItem = ({ id, Image, name, color, price, amount }) => {
         <div>
           <h5 className="name"> {name}</h5>
           <p>
-            color: <span style={{ backgroundColor: color }}></span>
+            color: <span style={{ backgroundColor: { color } }}></span>
           </p>
           <h5 className="price-small">{formatPrice(price)}</h5>
         </div>

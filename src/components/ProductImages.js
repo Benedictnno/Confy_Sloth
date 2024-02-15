@@ -6,7 +6,7 @@ const ProductImages = ({ images = [{ url: "" }] }) => {
 
   return (
     <Wrapper>
-      <img src={main.url} alt="main" className="gallery" />
+      <img src={main.url} alt="main" className="gallery space" />
       <div className="gallery">
         {images.map((image, index) => {
           return (
@@ -37,6 +37,9 @@ const Wrapper = styled.section`
     border-radius: var(--radius);
     object-fit: cover;
   }
+  .space {
+    margin-top: -2rem;
+  }
   .gallery {
     margin-top: 1rem;
     display: grid;
@@ -58,6 +61,9 @@ const Wrapper = styled.section`
       img {
         height: 50px;
       }
+    }
+    .space {
+      margin-top: 0;
     }
   }
   @media (min-width: 992px) {
