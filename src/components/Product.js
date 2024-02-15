@@ -33,7 +33,7 @@ const Wrapper = styled.article`
     object-fit: cover;
     border-radius: var(--radius);
     transition: var(--transition);
-    margin-top: -1rem;
+    margin-top: -3rem;
   }
   .link {
     position: absolute;
