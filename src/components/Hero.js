@@ -9,7 +9,7 @@ const Hero = () => {
     <Wrapper className="section-center">
       <article className="content">
         <h1>
-         We Enjoy <br />
+          We Enjoy <br />
           Our Gadgets
         </h1>
         <p>
@@ -23,8 +23,18 @@ const Hero = () => {
         </Link>
       </article>
       <article className="img-container">
-        <img src={heroBcg} alt="nice table" className="main-img" />
-        <img src={heroBcg2} alt="person working" className="accent-img" />
+        <img
+          src={heroBcg}
+          loading="lazy"
+          alt="nice table"
+          className="main-img"
+        />
+        <img
+          src={heroBcg2}
+          loading="lazy"
+          alt="person working"
+          className="accent-img"
+        />
       </article>
     </Wrapper>
   );

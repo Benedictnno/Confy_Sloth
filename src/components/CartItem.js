@@ -16,11 +16,11 @@ const CartItem = ({ id, Image, name, color, price, amount }) => {
   return (
     <Wrapper>
       <div className="title">
-        <img src={Image} alt={name} />
+        <img src={Image} loading="lazy" alt={name} />
         <div>
           <h5 className="name"> {name}</h5>
           <p>
-            color: <span style={{ background: color }}></span>
+            color: <span style={{ backgroundColor: color }}></span>
           </p>
           <h5 className="price-small">{formatPrice(price)}</h5>
         </div>
