@@ -92,7 +92,7 @@ const Wrapper = styled.main`
   .product-center {
     display: grid;
     gap: 4rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   .price {
     color: var(--clr-primary-5);
