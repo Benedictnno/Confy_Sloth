@@ -99,9 +99,9 @@ const Wrapper = styled.main`
     color: var(--clr-primary-5);
   }
   .desc {
-    line-height: 2px;
+    line-height: 10;
     max-width: 45em;
-    height: max-content;
+    height: 50rem;
   }
   .info {
     text-transform: capitalize;
