@@ -14,8 +14,7 @@ const CartItem = ({ id, Image, name, color, price, amount }) => {
     toggleAmount(id, "dec");
   }
   const freeColor = color.split(";");
-  console.log(freeColor);
-  console.log(color);
+ 
   return (
     <Wrapper colors={color}>
       <div className="title">
