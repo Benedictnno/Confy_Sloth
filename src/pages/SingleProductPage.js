@@ -101,6 +101,7 @@ const Wrapper = styled.main`
   .desc {
     line-height: 2px;
     max-width: 45em;
+    height: max-content;
   }
   .info {
     text-transform: capitalize;

@@ -39,7 +39,7 @@ const Wrapper = styled.section`
   }
   .space {
   
-    height: 15rem;
+    height: 20rem;
   }
   .gallery {
     display: grid;
