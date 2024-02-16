@@ -6,7 +6,7 @@ const ProductImages = ({ images = [{ url: "" }] }) => {
 
   return (
     <Wrapper>
-      <img src={main.url} alt="main" className="gallery space" />
+      <img src={main.url} alt="main" className="gallery main" />
       <div className="gallery multiple">
         {images.map((image, index) => {
           return (
@@ -38,7 +38,7 @@ const Wrapper = styled.section`
     object-fit: cover;
   }
   .space {
-  
+    margin-top: -5rem;
     height: 25rem;
   }
   .gallery {
