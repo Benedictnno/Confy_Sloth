@@ -39,7 +39,7 @@ const Wrapper = styled.section`
   }
   .space {
     margin-top: -11rem;
-    height: 10rem;
+    height: auto;
   }
   .gallery {
     display: grid;
@@ -51,7 +51,7 @@ const Wrapper = styled.section`
     }
   }
   .multiple {
-    margin-top: -8rem;
+    /* margin-top: -8rem; */
   }
   .active {
     box-shadow: 0px 0px 0px 3px var(--clr-primary-5);
