@@ -14,8 +14,8 @@ const CartItem = ({ id, Image, name, color, price, amount }) => {
     toggleAmount(id, "dec");
   }
   const freeColor = color.split(";");
- console.log(freeColor);
- console.log(color);
+  console.log(freeColor);
+  console.log(color);
   return (
     <Wrapper colors={color}>
       <div className="title">
@@ -23,7 +23,11 @@ const CartItem = ({ id, Image, name, color, price, amount }) => {
         <div>
           <h5 className="name"> {name}</h5>
           <p>
-            color: <span className="color"></span>
+            color:{" "}
+            <span
+              className="color"
+              style={{ background: color.toString() }}
+            ></span>
           </p>
           <h5 className="price-small">{formatPrice(price)}</h5>
         </div>
@@ -91,7 +95,7 @@ const Wrapper = styled.article`
     display: inline-block;
     width: 0.5rem;
     height: 0.5rem;
-    background: ${(colors) => (colors ? colors : null)};
+    background: ${(colors) => (colors ? colors.toString() : null)};
     margin-left: 0.5rem;
     border-radius: var(--radius);
   }
