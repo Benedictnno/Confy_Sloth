@@ -98,7 +98,7 @@ const Wrapper = styled.main`
     color: var(--clr-primary-5);
   }
   .desc {
-    line-height: 2;
+    line-height: 2px;
     max-width: 45em;
   }
   .info {
