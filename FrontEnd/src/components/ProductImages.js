@@ -38,8 +38,7 @@ const Wrapper = styled.section`
     object-fit: cover;
   }
   .space {
-    margin-top: -5rem;
-    height: 25rem;
+    margin-top: -1rem;
   }
   .gallery {
     display: grid;
