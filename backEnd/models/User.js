@@ -29,6 +29,12 @@ const UserSchema = new mongoose.Schema({
     // minlength: 6,
     // maxlength: 50,
   },
+  location: {
+    type: String,
+    required: [true, "please provide a password"],
+    // minlength: 6,
+    // maxlength: 50,
+  },
 });
 
 UserSchema.pre("save", async function () {
