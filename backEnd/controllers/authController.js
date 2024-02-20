@@ -5,14 +5,14 @@ const { StatusCodes } = require("http-status-codes");
 const createTokenUser = require("../utils/createTokenUser");
 
 const register = async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name, location } = req.body;
   const emailAlreadyExist = await User.findOne({ email });
   if (emailAlreadyExist) {
     throw new CustomError.BadRequestError("Email already in use");
   }
   const isFirstAccount = (await User.countDocuments({})) === 0;
   const role = isFirstAccount ? "admin" : "user";
-  const user = await User.create({ email, password, name, role });
+  const user = await User.create({ email, password, name, role, location });
   const tokenUser = createTokenUser(user);
 
   attachCookiesToResponse({ res, tokenUser });
@@ -34,7 +34,8 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new CustomError.UnauthenticatedError("Invalid Credentials");
   }
-  const tokenUser = createTokenUser(user)
+  console.log(user);
+  const tokenUser = createTokenUser(user);
   attachCookiesToResponse({ res, tokenUser });
 
   res.status(StatusCodes.OK).json({ user: tokenUser });

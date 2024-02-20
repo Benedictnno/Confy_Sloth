@@ -26,5 +26,4 @@ const authorizePermissions = (...roles) => {
   };
 };
 
-
 module.exports = { authorizePermissions, authenticate };

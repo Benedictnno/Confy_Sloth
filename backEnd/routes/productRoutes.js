@@ -28,7 +28,6 @@ router
   .delete([authenticate, authorizePermissions("admin")], deleteProduct)
   .patch([authenticate, authorizePermissions("admin")], updateProduct);
 
-  
 router.route("/:id/reviews").get(getSingleProductReviews);
 
 module.exports = router;

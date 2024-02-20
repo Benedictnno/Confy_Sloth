@@ -10,6 +10,7 @@ const userRouter = require("./routes/userRoutes");
 const productRouter = require("./routes/productRoutes");
 const reviewRouter = require("./routes/reviewRoutes");
 const OrderRouter = require("./routes/orderRoutes");
+const uploadRouter = require("./routes/uploadImage");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 const rateLimiter = require("express-rate-limit");
@@ -17,6 +18,13 @@ const helmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const ExpressMongoSanitize = require("express-mongo-sanitize");
+const cloudinary= require('cloudinary').v2
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+  secure: true,
+});
 
 const app = express();
 
@@ -32,10 +40,11 @@ app.use(xss())
 app.use(cors())
 app.use(ExpressMongoSanitize())
 
-// app.use(morgan("tiny"));
+app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_PASS));
 app.use(fileUpload());
+app.use(fileUpload({ useTempFiles: true }));
 app.use(express.static("./public"));
 
 // app.get("/", (req, res) => {
@@ -52,6 +61,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/orders", OrderRouter);
+app.use("/api/v1/uploadImage", uploadRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
