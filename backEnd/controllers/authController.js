@@ -3,21 +3,44 @@ const CustomError = require("../errors");
 const { attachCookiesToResponse } = require("../utils/jwt");
 const { StatusCodes } = require("http-status-codes");
 const createTokenUser = require("../utils/createTokenUser");
+const crypto = require("crypto");
+const Token = require("../models/Token");
+const sendVerification= require("../utils/sendVerification")
 
 const register = async (req, res) => {
-  const { email, password, name, location } = req.body;
-  const emailAlreadyExist = await User.findOne({ email });
-  if (emailAlreadyExist) {
-    throw new CustomError.BadRequestError("Email already in use");
+   const { email, password, name, location } = req.body;
+
+  const emailAlreadyExists = await User.findOne({ email });
+  if (emailAlreadyExists) {
+    throw new CustomError.BadRequestError("Email already exists");
   }
+
+  // first registered user is an admin
   const isFirstAccount = (await User.countDocuments({})) === 0;
   const role = isFirstAccount ? "admin" : "user";
-  const user = await User.create({ email, password, name, role, location });
-  const tokenUser = createTokenUser(user);
-
-  attachCookiesToResponse({ res, tokenUser });
-  res.status(StatusCodes.CREATED).json({ user: tokenUser });
+  const verificationToken = crypto.randomBytes(40).toString("hex");
+  const user = await User.create({
+    name,
+    email,
+    password,
+    verificationToken,
+    role,
+    location
+  });
+  // const tokenUser = createTokenUser(user);
+  // attachCookiesToResponse({ res, user: tokenUser });
+  console.log(user);
+  await sendVerification({
+    email: user.email,
+    name: user.name,
+    verificationToken: user.verificationToken,
+    origin: "http://localhost:3000",
+  });
+  res
+    .status(StatusCodes.CREATED)
+    .json({ msg: `verify token`, verification: user.verificationToken });
 };
+
 
 const login = async (req, res) => {
   const { email, password } = req.body;

@@ -43,7 +43,6 @@ app.use(ExpressMongoSanitize())
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_PASS));
-app.use(fileUpload());
 app.use(fileUpload({ useTempFiles: true }));
 app.use(express.static("./public"));
 
