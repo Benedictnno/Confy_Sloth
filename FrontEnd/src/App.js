@@ -11,6 +11,8 @@ import {
   Products,
   PrivateRoute,
   AuthWrapper,
+  Order,
+  Login
 } from "./pages";
 function App() {
   return (
@@ -23,7 +25,15 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="cart" element={<Cart />} />
           <Route path="products" element={<Products />} />
-          <Route path="login" element={<Products />} />
+          <Route path="login" element={<Login />} />
+          <Route
+            path="order"
+            element={
+              <PrivateRoute>
+                <Order />
+              </PrivateRoute>
+            }
+          />
           <Route path="products/:id" element={<SingleProduct />} />
           <Route
             path="checkout"

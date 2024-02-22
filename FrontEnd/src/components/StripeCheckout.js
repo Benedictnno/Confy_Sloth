@@ -145,6 +145,28 @@ const StripeCheckout = () => {
  
   return (
     <Wrapper>
+      <div>
+        <h2> Shipping info</h2>
+        <form action="">
+          <div>
+            <label htmlFor=""> Delivery address</label>
+            <input type="text" />
+          </div>
+          <label htmlFor=""> City</label>
+          <select name="" id="">
+            <option value="Lagos">Lagos</option>
+            <option value="Benin">Benin</option>
+            <option value="Abuja">Abuja</option>
+            <option value="ibadan">ibadan</option>
+          </select>
+          <div>
+            <label htmlFor="">Phone Number 1</label>
+            <input type="tel" />
+            <label htmlFor="">Phone Number 2</label>
+            <input type="tel" />
+          </div>
+        </form>
+      </div>
       <Elements stripe={promise}>
         <CheckoutForm />
       </Elements>
