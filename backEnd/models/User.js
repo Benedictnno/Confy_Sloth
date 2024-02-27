@@ -14,9 +14,9 @@ const UserSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 50,
   },
-  phone: {
-    type: Number,
-    required: [true, "please provide a phone number"],
+  phoneNumber: {
+    type: String,
+    // required: [true, "please provide a phone number"],
     maxlength: 11,
   },
   email: {
@@ -28,10 +28,10 @@ const UserSchema = new mongoose.Schema({
       message: (props) => `${props.value} is not a valid phone number!`,
     },
   },
-  dateOfBirth: {
-    type: Date,
-    required: [true, "please provide a password"],
-  },
+  // dateOfBirth: {
+  //   type: Date,
+  //   required: [true, "please provide a dateOfBirth"],
+  // },
   role: {
     type: String,
     enum: ["admin", "user"],
@@ -44,25 +44,25 @@ const UserSchema = new mongoose.Schema({
     maxlength: 50,
   },
   location: [locationSchema],
-  passwordToken: {
-    type: String,
-    required: [true, "Please provide passwordToken"],
-  },
-  passwordTokenExpirationDate: {
-    type: Date,
-    required: [true],
-  },
-  verificationToken: {
-    type: String,
-    // required: [true, "Please provide verificationToken"],
-  },
-  isVerified: {
-    type: Boolean,
-    default: false,
-  },
-  verified: {
-    type: Date,
-  },
+  // passwordToken: {
+  //   type: String,
+  //   required: [true, "Please provide passwordToken"],
+  // },
+  // passwordTokenExpirationDate: {
+  //   type: Date,
+  //   required: [true],
+  // },
+  // verificationToken: {
+  //   type: String,
+  //   required: [true, "Please provide verificationToken"],
+  // },
+  // isVerified: {
+  //   type: Boolean,
+  //   default: false,
+  // },
+  // verified: {
+  //   type: Date,
+  // },
 });
 
 UserSchema.pre("save", async function () {

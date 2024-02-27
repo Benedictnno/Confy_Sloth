@@ -12,8 +12,11 @@ import {
   PrivateRoute,
   AuthWrapper,
   Order,
-  Login
+  Login,
+  DashBoard
 } from "./pages";
+import ProtectDashBoard from "./pages/ProtectDashBoard";
+import Cookie from "./components/Cookie";
 function App() {
   return (
     <AuthWrapper>
@@ -43,8 +46,18 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="dashboard"
+            element={
+              <ProtectDashBoard>
+                <DashBoard />
+              </ProtectDashBoard>
+            }
+          />
           <Route path="error" element={<Error />} />
         </Routes>
+        <Cookie />
+
         <Footer />
       </Router>
     </AuthWrapper>

@@ -18,27 +18,29 @@ const register = async (req, res) => {
   // first registered user is an admin
   const isFirstAccount = (await User.countDocuments({})) === 0;
   const role = isFirstAccount ? "admin" : "user";
-  const verificationToken = crypto.randomBytes(40).toString("hex");
+  // const verificationToken = crypto.randomBytes(40).toString("hex");
   const user = await User.create({
     name,
     email,
     password,
-    verificationToken,
+    // verificationToken,
     role,
     location
   });
-  // const tokenUser = createTokenUser(user);
-  // attachCookiesToResponse({ res, user: tokenUser });
-  console.log(user);
-  await sendVerification({
-    email: user.email,
-    name: user.name,
-    verificationToken: user.verificationToken,
-    origin: "http://localhost:3000",
-  });
-  res
-    .status(StatusCodes.CREATED)
-    .json({ msg: `verify token`, verification: user.verificationToken });
+
+  const tokenUser = createTokenUser(user);
+  attachCookiesToResponse({ res, tokenUser });
+  
+  // await sendVerification({
+  //   email: user.email,
+  //   name: user.name,
+  //   verificationToken: user.verificationToken,
+  //   origin: "http://localhost:3000",
+  // });
+  // res
+  //   .status(StatusCodes.CREATED)
+  //   .json({ msg: `verify token`, verification: user.verificationToken });
+   res.status(StatusCodes.CREATED).json({user: tokenUser });
 };
 
 
@@ -57,11 +59,11 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new CustomError.UnauthenticatedError("Invalid Credentials");
   }
-  console.log(user);
+ 
   const tokenUser = createTokenUser(user);
   attachCookiesToResponse({ res, tokenUser });
 
-  res.status(StatusCodes.OK).json({ user: tokenUser });
+  res.status(StatusCodes.OK).json({ tokenUser });
 };
 
 const logout = async (req, res) => {

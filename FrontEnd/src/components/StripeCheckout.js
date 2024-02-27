@@ -14,12 +14,9 @@ import { formatPrice } from "../utils/helpers";
 
 import { useNavigate } from "react-router-dom";
 
-
-
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const CheckoutForm = () => {
-
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
   const navigate = useNavigate();
@@ -67,29 +64,28 @@ const CheckoutForm = () => {
   };
 
   const handleChange = async (event) => {
-    setDisabled(event.empty)
-    setError(event.error ? event.error.message:'')
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
   };
   const handleSubmit = async (ev) => {
-    ev.preventDefault()
-    setProcessing(true)
-    const payload = await stripe.confirmCardPayment(clientSecret,{
-      payment_method:{
-        card: elements.getElement(CardElement)
-      }
-    })
+    ev.preventDefault();
+    setProcessing(true);
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+      },
+    });
     if (payload.error) {
-      setError(`Payment faild ${payload.error.message}`)
-      setProcessing(false)
-    }
-    else{
-      setError(null)
-      setProcessing(false)
-      setSucceeded(true)
-      setTimeout(()=>{
-        clearCart()
+      setError(`Payment faild ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      setTimeout(() => {
+        clearCart();
         navigate("/");
-      },10000)
+      }, 10000);
     }
   };
   return (
@@ -139,13 +135,10 @@ const CheckoutForm = () => {
   );
 };
 
-
-
 const StripeCheckout = () => {
- 
   return (
     <Wrapper>
-      <div>
+      {/* <div>
         <h2> Shipping info</h2>
         <form action="">
           <div>
@@ -166,7 +159,121 @@ const StripeCheckout = () => {
             <input type="tel" />
           </div>
         </form>
+      </div> */}
+
+      <div className="mt-4 flex flex-col bg-gray-100 rounded-lg p-4 shadow-sm">
+        <h2 className="text-black font-bold text-lg">
+          Shipping Label Address Form
+        </h2>
+
+        <div className="mt-4">
+          <label className="text-black" for="name">
+           Receivers Name
+          </label>
+          <input
+            placeholder="Your name"
+            className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
+            type="text"
+          />
+        </div>
+
+        <div className="mt-4">
+          <label className="text-black" for="address">
+            Address
+          </label>
+          <textarea
+            placeholder="Your address"
+            className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
+            id="address"
+          ></textarea>
+        </div>
+
+        <div className="mt-4 flex flex-row space-x-2">
+          <div className="flex-1">
+            <label className="text-black" for="city">
+              City
+            </label>
+            <input
+              placeholder="Your city"
+              className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
+              id="city"
+              type="text"
+            />
+          </div>
+
+          <div className="flex-1">
+            <label className="text-black" for="state">
+              State
+            </label>
+            <input
+              placeholder="Your state"
+              className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
+              id="state"
+              type="text"
+            />
+          </div>
+        </div>
+
+{/* adding zip code */}
+
+        {/* <div className="mt-4 flex flex-row space-x-2">
+          <div className="flex-1">
+            <label className="text-black" for="zip">
+              ZIP
+            </label>
+            <input
+              placeholder="Your ZIP code"
+              className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
+              id="zip"
+              type="text"
+            />
+          </div> */}
+{/* selecting countries */}
+          {/* <div className="flex-1">
+            <label className="text-black" for="country">
+              Country
+            </label>
+            <select
+              className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
+              id="country"
+            >
+              <option value="">Select a country</option>
+              <optgroup label="Africa">
+                <option value="AF">Afghanistan</option>
+                <option value="DZ">Algeria</option>
+                <option value="AO">Angola</option>
+                ...
+                <option value="ZW">Zimbabwe</option>
+              </optgroup>
+              <optgroup label="Asia">
+                <option value="AM">Armenia</option>
+                <option value="AZ">Azerbaijan</option>
+                <option value="BH">Bahrain</option>
+                ...
+                <option value="YE">Yemen</option>
+              </optgroup>
+              <optgroup label="South America">
+                <option value="AR">Argentina</option>
+                <option value="BO">Bolivia</option>
+                <option value="BR">Brazil</option>
+                ...
+                <option value="VE">Venezuela</option>
+              </optgroup>
+              ...
+            </select>
+          </div>
+        </div> */}
+
+        <div className="mt-4 flex justify-end">
+          <button
+            className="bg-white text-black rounded-md px-4 py-1 hover:bg-gray-200 hover:text-gray-900"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
       </div>
+
       <Elements stripe={promise}>
         <CheckoutForm />
       </Elements>
@@ -175,6 +282,9 @@ const StripeCheckout = () => {
 };
 
 const Wrapper = styled.section`
+  display: flex;
+  gap: 3rem;
+  margin:3rem 0;
   form {
     width: 30vw;
     align-self: center;
