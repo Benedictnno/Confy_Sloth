@@ -11,7 +11,7 @@ const getLocalStorage = () => {
 };
 export const UserProvider = ({ children }) => {
   const [myUser, setMyUser] = useState(getLocalStorage());
-  const { loginWithRedirect, logout, user } = useAuth0();
+  // const { loginWithRedirect, logout, user } = useAuth0();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,24 +23,28 @@ export const UserProvider = ({ children }) => {
         password,
       });
       console.log(res);
-      // setMyUser(res.data.tokenUser);
-      localStorage.setItem("user", JSON.stringify(res.data.tokenUser));
+      setMyUser(res.data.tokenUser);
+      // localStorage.setItem("user", JSON.stringify(res.data.tokenUser));
     } catch (error) {
       console.log(error);
     }
   };
 
+
+  const logout = ()=>{
+    localStorage.removeItem('user')
+  }
   // useEffect(() => {
   //   setMyUser(user);
   // }, [user]);
 
-  // useEffect(()=>{
-    
-  // },[])
+  useEffect(()=>{
+    localStorage.setItem('user',JSON.stringify(myUser))
+  },[myUser])
   return (
     <UserContext.Provider
       value={{
-        loginWithRedirect,
+        
         logout,
         myUser,
         name,

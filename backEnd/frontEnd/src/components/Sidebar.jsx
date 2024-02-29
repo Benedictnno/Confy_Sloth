@@ -25,7 +25,7 @@ const Sidebar = () => {
         <ul className="links">
           {links.map(({ id, text, url }) => {
             return (
-              <li key={id}>
+              <li key={id} onClick={closeSidebar} >
                 <Link to={url} onClick={closeSidebar}>
                   {text}
                 </Link>
@@ -33,9 +33,16 @@ const Sidebar = () => {
             );
           })}
           {myUser && (
-            <li>
+            <li onClick={closeSidebar} >
               <Link to="/checkout" onClick={closeSidebar}>
                 checkout
+              </Link>
+            </li>
+          )}
+          {myUser && myUser.role === 'admin' && (
+            <li onClick={closeSidebar} >
+              <Link to="/dashboard" onClick={closeSidebar}>
+                DashBoard
               </Link>
             </li>
           )}

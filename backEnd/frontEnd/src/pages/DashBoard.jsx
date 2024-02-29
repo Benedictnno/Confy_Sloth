@@ -1,7 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { useProductsContext } from "../context/products_context";
 
 function DashBoard() {
+  const { setUploadProduct, uploadProduct, uploadImages,saveProduct } =
+    useProductsContext();
+  const handleChange = (e) => {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    setUploadProduct((values) => ({ ...values, [name]: value }));
+  };
   return (
     <Wrapper>
       <div>
@@ -11,99 +20,114 @@ function DashBoard() {
           <div class="modal">
             <div class="modal__header">
               <span class="modal__title">New Product</span>
-              <button class="button button--icon">
-                <svg
-                  width="24"
-                  viewBox="0 0 24 24"
-                  height="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path fill="none" d="M0 0h24v24H0V0z"></path>
-                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path>
-                </svg>
-              </button>
             </div>
             <div class="modal__body">
               <div class="input">
                 <label class="input__label">Project title</label>
-                <input class="input__field" type="text" />
+                <input
+                  class="input__field"
+                  type="text"
+                  name="name"
+                  value={uploadProduct.name}
+                  onChange={handleChange}
+                />
                 <p class="input__description">
                   The title must contain a maximum of 32 characters
                 </p>
               </div>
               <div class="input">
                 <label class="input__label">Description</label>
-                <textarea class="input__field input__field--textarea"></textarea>
+                <textarea
+                  class="input__field input__field--textarea"
+                  name="description"
+                  value={uploadProduct.description}
+                  onChange={handleChange}
+                ></textarea>
                 <p class="input__description">
                   Give your project a good description so everyone know what's
                   it for
                 </p>
               </div>
+              <div className="mini_inputs">
+                <div className="mt-4 flex flex-row space-x-2">
+                  <div className="flex-1">
+                    <label className="text-black" for="city">
+                      Price
+                    </label>
+                    <input
+                      placeholder="Price"
+                      className="input__field"
+                      id="city"
+                      type="number"
+                      name="price"
+                      value={uploadProduct.price}
+                      onChange={handleChange}
+                    />
+                  </div>
 
-              <div className="mt-4 flex flex-row space-x-2">
-                <div className="flex-1">
-                  <label className="text-black" for="city">
-                    Price
-                  </label>
-                  <input
-                    placeholder="Price"
-                    className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
-                    id="city"
-                    type="number"
-                  />
+                  <div className="flex-1">
+                    <label className="text-black" for="state">
+                      Category
+                    </label>
+                    <input
+                      placeholder="Category"
+                      className="input__field"
+                      id="state"
+                      type="text"
+                      name="category"
+                      value={uploadProduct.category}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
 
-                <div className="flex-1">
-                  <label className="text-black" for="state">
-                    Category
-                  </label>
-                  <input
-                    placeholder="Category"
-                    className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
-                    id="state"
-                    type="text"
-                  />
+                <div className="mt-4 flex flex-row space-x-2">
+                  <div className="flex-1">
+                    <label className="text-black" for="city">
+                      Company
+                    </label>
+                    <input
+                      placeholder="company"
+                      // w-full bg-white rounded-md border-gray-300 text-black px-2 py-1
+                      className="input__field"
+                      id="city"
+                      type="text"
+                      name="company"
+                      value={uploadProduct.company}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <label className="text-black" for="state">
+                      inventory
+                    </label>
+                    <input
+                      placeholder="Number of item"
+                      className="input__field"
+                      id="state"
+                      type="number"
+                      name="inventory"
+                      value={uploadProduct.inventory}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-4 flex flex-row space-x-2">
-                <div className="flex-1">
-                  <label className="text-black" for="city">
-                    Company
-                  </label>
-                  <input
-                    placeholder="company"
-                    className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
-                    id="city"
-                    type="text"
-                  />
-                </div>
-
-                <div className="flex-1">
-                  <label className="text-black" for="state">
-                    inventory
-                  </label>
-                  <input
-                    placeholder="Number of item"
-                    className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
-                    id="state"
-                    type="number"
-                  />
-                </div>
-              </div>
               {/* check box */}
-              <div className="flex flex-grow gap-16">
+              <div className="mini_inputs space">
                 <div>
                   <p>Free shipping</p>
                   <label class="cont">
-                    <input type="checkbox" checked="" />
+                    <input type="checkbox" checked="" name="shipping" />
                     <span></span>
                   </label>
                 </div>
                 <div>
                   <p>Featured</p>
                   <label class="cont">
-                    <input type="checkbox" checked="" />
+                    <input type="checkbox" checked="" name="featured" />
                     <span></span>
                   </label>
                 </div>
@@ -116,7 +140,9 @@ function DashBoard() {
                     placeholder="#Black"
                     className="w-full bg-white rounded-md border-gray-300 text-black px-2 py-1"
                     id="city"
-                    type="text"
+                    type="color"
+                    value={uploadProduct.color}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -124,7 +150,7 @@ function DashBoard() {
             </div>
 
             <div class="modal__footer">
-              <button class="button button--primary">Create Product</button>
+              <button class="button button--primary" onClick={saveProduct} >Create Product</button>
             </div>
           </div>
         </div>
@@ -154,15 +180,26 @@ function DashBoard() {
         <div class="text">
           <span>Click to upload image</span>
         </div>
-        <input type="file" id="file" />
+        <input type="file" id="file" onChange={uploadImages} />
       </label>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.main`
-  margin: 3rem 0;
+  /* margin: 3rem 0; */
 
+  .mini_inputs {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 1;
+    /* flex-grow: 1; */
+    gap: 1rem;
+  }
+  .space {
+    gap: 2rem;
+    margin-top: 1rem;
+  }
   /* check box */
   /* Hide the default checkbox */
   .cont {

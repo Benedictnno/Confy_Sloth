@@ -5,10 +5,10 @@ const { StatusCodes } = require("http-status-codes");
 const createTokenUser = require("../utils/createTokenUser");
 const crypto = require("crypto");
 const Token = require("../models/Token");
-const sendVerification= require("../utils/sendVerification")
+const sendVerification = require("../utils/sendVerification");
 
 const register = async (req, res) => {
-   const { email, password, name, location } = req.body;
+  const { email, password, name, location } = req.body;
 
   const emailAlreadyExists = await User.findOne({ email });
   if (emailAlreadyExists) {
@@ -25,12 +25,12 @@ const register = async (req, res) => {
     password,
     // verificationToken,
     role,
-    location
+    location,
   });
 
   const tokenUser = createTokenUser(user);
   attachCookiesToResponse({ res, tokenUser });
-  
+
   // await sendVerification({
   //   email: user.email,
   //   name: user.name,
@@ -40,9 +40,8 @@ const register = async (req, res) => {
   // res
   //   .status(StatusCodes.CREATED)
   //   .json({ msg: `verify token`, verification: user.verificationToken });
-   res.status(StatusCodes.CREATED).json({user: tokenUser });
+  res.status(StatusCodes.CREATED).json({ user: tokenUser });
 };
-
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -59,10 +58,11 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new CustomError.UnauthenticatedError("Invalid Credentials");
   }
- 
-  const tokenUser = createTokenUser(user);
-  attachCookiesToResponse({ res, tokenUser });
 
+  const tokenUser = createTokenUser(user);
+
+  attachCookiesToResponse({ res, tokenUser });
+  // console.log(res,"response");
   res.status(StatusCodes.OK).json({ tokenUser });
 };
 

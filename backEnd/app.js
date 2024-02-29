@@ -50,10 +50,10 @@ app.use(express.static("./frontEnd/dist"));
 //   res.send("e-commerce");
 // });
 
-// app.get("/api/v1/", (req, res) => {
-//   console.log(req.signedCookies);
-//   res.send("e-commerce");
-// });
+app.get("/api/v1", (req, res) => {
+  console.log(req.signedCookies);
+  res.send("e-commerce");
+});
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);

@@ -20,7 +20,7 @@ const ProductSchema = new mongoose.Schema(
       maxlength: [1000, "Name can not be more than 1000 characters"],
     },
     image: {
-      type: String,
+      type: [String],
       required: true,
       default: "/uploads/example.jpeg",
     },
