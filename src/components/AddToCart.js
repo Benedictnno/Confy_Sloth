@@ -10,6 +10,7 @@ const AddToCart = ({ product }) => {
   const [mainColor, setMainColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
   const { addToCart } = useCartContext();
+  
   function increase() {
     setAmount((oldAmount) => {
       let tempAmount = oldAmount + 1;

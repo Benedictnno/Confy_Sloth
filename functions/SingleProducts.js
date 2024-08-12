@@ -20,6 +20,7 @@ exports.handler = async function (event, context, cd) {
       }
       singleProduct = { id: singleProduct.id, ...singleProduct .fields};
       
+      
       return {
         statusCode: 200,
         body: JSON.stringify(singleProduct),

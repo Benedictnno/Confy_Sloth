@@ -39,8 +39,10 @@ export const services = [
   },
 ]
 
-export const products_url = "/.netlify/functions/Products";
+// export const products_url = "/.netlify/functions/Products";
+export const products_url = "https://sparrow-x.onrender.com/api/v1/products";
 // export const products_url = "https://course-api.com/react-store-products";
 
- export const single_product_url = `/.netlify/functions/SingleProducts?id=`;
+//  export const single_product_url = `/.netlify/functions/SingleProducts?id=`;
+ export const single_product_url = `https://sparrow-x.onrender.com/api/v1/products/`;
 //  export const single_product_url = `https://course-api.com/react-store-single-product?id=`;

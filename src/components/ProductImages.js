@@ -3,16 +3,17 @@ import styled from "styled-components";
 
 const ProductImages = ({ images = [{ url: "" }] }) => {
   const [main, setMain] = useState(images[0]);
+console.log(main);
 
   return (
     <Wrapper>
-      <img src={main.url} alt="main" className="gallery main space" />
+      <img src={main} alt="main" className="gallery main space" />
       <div className="gallery multiple">
         {images.map((image, index) => {
           return (
             <img
-              src={image.url}
-              alt={image.url}
+              src={image}
+              alt={image}
               key={index}
               onClick={() => {
                 setMain(images[index]);
