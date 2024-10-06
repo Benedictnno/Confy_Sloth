@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import { Navbar, Sidebar, Footer } from './components';
 import {
   Home,
@@ -11,6 +12,7 @@ import {
   Products,
   PrivateRoute,
   AuthWrapper,
+  Login
 } from './pages';
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
           <Route path='about' element={<About />} />
           <Route path='cart' element={<Cart />} />
           <Route path='products' element={<Products />} />
+          {/* <Route path='Login' element={<Login />} /> */}
           <Route path='products/:id' element={<SingleProduct />} />
           <Route
             path='checkout'
