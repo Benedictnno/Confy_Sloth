@@ -25,6 +25,7 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
+
     // eslint-disable-next-line
   }, [id]);
   useEffect(() => {
@@ -62,7 +63,7 @@ const SingleProductPage = () => {
           back to products
         </Link>
         <div className="product-center">
-          <ProductImages images={images} />
+          {images && <ProductImages images={images} />}
           <section className="content">
             <h2>{name}</h2>
             <Stars stars={stars} reviews={reviews} />
