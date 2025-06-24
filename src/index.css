@@ -3,6 +3,9 @@
 Variables
 ===============
 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   /* dark shades of primary color*/
@@ -212,4 +215,3 @@ p {
 .page {
   min-height: calc(100vh - (20vh + 10rem));
 }
-

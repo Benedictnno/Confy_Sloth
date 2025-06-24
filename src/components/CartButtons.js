@@ -21,19 +21,23 @@ const CartButtons = () => {
       </Link>
 
       {!myUser ? (
-        <button type="button" className="auth-btn" onClick={loginWithRedirect}>
-          Login <FaUserPlus />{" "}
-        </button>
+        <Link to={"login"} className="auth-btn">
+          {" "}
+          Login <FaUserPlus />
+        </Link>
       ) : (
+        // <button type="button" className="auth-btn" onClick={loginWithRedirect}>
+        //   Login <FaUserPlus />{" "}
+        // </button>
         <button
           type="button"
           className="auth-btn"
-          onClick={() =>{
-            clearCart()
+          onClick={() => {
+            clearCart();
             logout({
               returnTo: window.location.origin,
-            })}
-          }
+            });
+          }}
         >
           LogOut <FaUserMinus />{" "}
         </button>

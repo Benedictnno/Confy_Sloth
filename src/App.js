@@ -14,6 +14,8 @@ import {
   AuthWrapper,
   Login
 } from './pages';
+import Signup from './pages/SignUpPage';
+import ForgotPassword from './pages/ForgotPassword';
 function App() {
   return (
     <AuthWrapper>
@@ -21,21 +23,24 @@ function App() {
         <Navbar />
         <Sidebar />
         <Routes>
-          <Route path='/' exact element={<Home />} />
-          <Route path='about' element={<About />} />
-          <Route path='cart' element={<Cart />} />
-          <Route path='products' element={<Products />} />
-          {/* <Route path='Login' element={<Login />} /> */}
-          <Route path='products/:id' element={<SingleProduct />} />
+          <Route path="/" exact element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="products" element={<Products />} />
+          <Route path="login" element={<Login />} />
+          <Route path="sign-up" element={<Signup />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+
+          <Route path="products/:id" element={<SingleProduct />} />
           <Route
-            path='checkout'
+            path="checkout"
             element={
               <PrivateRoute>
                 <Checkout />
               </PrivateRoute>
             }
           />
-          <Route path='error' element={<Error />} />
+          <Route path="error" element={<Error />} />
         </Routes>
         <Footer />
       </Router>
