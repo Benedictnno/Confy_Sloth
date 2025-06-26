@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 const SingleProductPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  
   const {
     single_product_loading: loading,
     single_product_error: error,
@@ -28,6 +29,8 @@ const SingleProductPage = () => {
 
     // eslint-disable-next-line
   }, [id]);
+  console.log(product);
+  
   useEffect(() => {
     if (error) {
       setTimeout(() => {

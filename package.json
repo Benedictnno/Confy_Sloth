@@ -5,6 +5,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.12.1",
     "@hookform/resolvers": "^5.1.1",
+    "@paystack/inline-js": "^2.22.6",
     "@stripe/react-stripe-js": "^1.14.2",
     "@stripe/stripe-js": "^1.42.1",
     "@tailwindcss/cli": "^4.1.10",

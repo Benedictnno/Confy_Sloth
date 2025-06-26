@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useUserContext } from "../context/user_context";
 
@@ -19,15 +19,16 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   });
 
-  const { setMyuser } = useUserContext();
+  const { setUser } = useUserContext();
+
   const onSubmit = async (data) => {
-   
-setMyuser(user.data.user)
-    console.log("====================================");
-    console.log(user);
-    console.log("====================================");
+    setUser(data);
   };
 
+  const { User } = useUserContext();
+  if (User) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className="max-w-md mx-auto mt-10 mb-[30vh]">
       <h2 className="text-2xl font-bold mb-4">Login</h2>
